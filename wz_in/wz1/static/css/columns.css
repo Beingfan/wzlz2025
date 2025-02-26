@@ -1,0 +1,66 @@
+/**
+* @author M Hemel Hasan
+* Column
+* @since V3.3.9
+*/
+.uacf7-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.uacf7-col-3,
+.uacf7-col-4,
+.uacf7-col-6,
+.uacf7-col-12 {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+/* Column widths using flex basis */
+.uacf7-col-3 {
+    flex: 0 0 25%;
+}
+
+.uacf7-col-4 {
+    flex: 0 0 33.3333%;
+}
+
+.uacf7-col-6 {
+    flex: 0 0 50%;
+}
+
+.uacf7-col-12 {
+    flex: 0 0 100%;
+}
+
+.uacf7-col-12 label,
+.uacf7-col-6 label,
+.uacf7-col-3 label,
+.uacf7-col-4 label,
+.uacf7-col-12 .wpcf7-form-control,
+.uacf7-col-6 .wpcf7-form-control,
+.uacf7-col-3 .wpcf7-form-control,
+.uacf7-col-4 .wpcf7-form-control {
+    width: 100% !important;
+    display: block;
+}
+
+@media only screen and (max-width: 767px) {
+    .uacf7-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .uacf7-col-3,
+    .uacf7-col-4,
+    .uacf7-col-6,
+    .uacf7-col-12 {
+        flex: 1 1 100%;
+        /* flex: 0 0 100%; */
+        max-width: 100%;
+        margin-right: 0;
+    }
+}
