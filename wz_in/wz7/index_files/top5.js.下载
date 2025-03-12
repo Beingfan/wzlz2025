@@ -1,0 +1,126 @@
+jQuery(document).ready(function($){
+    function htmlDecode(value) {
+        return $("<textarea/>").html(value).text();
+    }
+
+    var funnelName = scriptData.funnelName;
+    var funnelVariation = htmlDecode(scriptData.funnelVariation);
+    var ctaName = null;
+    var ctaValue = null;
+    var funnelPrelander = scriptData.funnelPrelander;
+
+    const generateUUID = () => {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+                v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    };
+
+    // handle transaction_id
+    const $transaction_id = $('[name="transaction_id"]');
+    if ($transaction_id.length) {
+        $transaction_id.val(generateUUID());
+    }
+
+    const handleJoinAllClick = (event) => {
+        event.stopImmediatePropagation();
+
+        var stepName = 'Lead Submit';
+		var funnelStep = 7;
+		var stepValue = $(this).text();
+		window.dataLayer.push({
+			'event':'funnelTracking',
+			'funnelStep': funnelStep,
+			'ctaName':ctaName,
+			'ctaValue':ctaValue,
+			'stepName':stepName,
+			'stepValue':stepValue,
+			'funnelName':funnelName,
+			'funnelVariation':funnelVariation,
+            'funnelPrelander':funnelPrelander,
+    	});
+
+        let membership_ids = [];
+        let membership_names = [];
+        scriptData.join_all_memberships_array.forEach((membership) => {
+            membership_ids.push(membership.id);
+            membership_names.push(membership.name);
+        });
+
+		$('input[name=memberships]').val(membership_ids.join(', '));
+		$('input[name=membership_names]').val(membership_names.join(', '));
+
+
+		$('.wrapper-memberships').addClass('loading');
+		$('.wpcf7-submit').attr('disabled',false);
+		validateBirthDate();
+		$('.wpcf7-submit').click();
+
+    };
+
+    const handleSelectedClick = (event) => {
+        event.stopImmediatePropagation();
+
+        if($('input[name="memberships[]"]:checked').length == 0){
+            if($('.membership-error').length == 0){
+                $('<span class="membership-error">Please select at least one membership!</span>').insertAfter('.select-membership h4');
+            }
+            $('html, body').animate({
+              scrollTop: ($('.select-membership h4').offset().top) - 70
+          },500);
+        }else{
+          var memberships = [];
+          var membership_names = [];
+          $('input[name="memberships[]"]:checked').map(function() {
+                var id = $(this).val();
+                memberships.push(id);
+                var found = scriptData.select_memberships_array.filter((element, index) =>{
+                    return element.id == id;
+                });
+                if (found.length) {
+                    membership_names.push(found[0].name);
+                }
+          });
+
+          $('input[name=memberships]').val(memberships.join(', '));
+          $('input[name=membership_names]').val(membership_names.join(', '));
+
+          var stepName = 'Lead Submit';
+          var funnelStep = 7;
+          var stepValue = $(this).text();
+          window.dataLayer.push({
+              'event':'funnelTracking',
+              'funnelStep': funnelStep,
+              'ctaName':ctaName,
+              'ctaValue':ctaValue,
+              'stepName':stepName,
+              'stepValue':stepValue,
+              'funnelName':funnelName,
+              'funnelVariation':funnelVariation,
+              'funnelPrelander':funnelPrelander,
+          });
+          
+          $('.wrapper-memberships').addClass('loading');
+          $('.wpcf7-submit').attr('disabled',false);
+          validateBirthDate();
+          $('.wpcf7-submit').click();
+
+        }
+    };
+
+    $('.bottom-membership .join-all-bt,.fixed-join-all button.join-all-bt').click(function(event) {
+        handleJoinAllClick(event);
+	});
+
+    $('.join-selected-bt').click(function(event) {
+        handleSelectedClick(event);
+    });
+
+    document.addEventListener( 'wpcf7mailsent', function( event ) {
+        event.stopImmediatePropagation();
+        var transaction_id = $('[name="transaction_id"]').val();
+        var transaction_id_param = scriptData.tyUrl.indexOf('?') >= 0 ? `&transaction_id=${transaction_id}` : `?transaction_id=${transaction_id}`;
+        location = scriptData.tyUrl + transaction_id_param;
+    }, false );
+});

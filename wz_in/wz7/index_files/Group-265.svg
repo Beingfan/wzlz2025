@@ -1,0 +1,26 @@
+<svg id="Group_265" data-name="Group 265" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="116.542" height="116.54" viewBox="0 0 116.542 116.54">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_110" data-name="Rectangle 110" width="116.542" height="116.54" fill="none"/>
+    </clipPath>
+    <filter id="Path_2006" x="-9" y="-6" width="134.54" height="134.54" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_264" data-name="Group 264" transform="translate(0 0)" clip-path="url(#clip-path)">
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_2006)">
+      <path id="Path_2006-2" data-name="Path 2006" d="M58.267,116.54A58.27,58.27,0,1,0,0,58.267,58.391,58.391,0,0,0,58.267,116.54" transform="translate(0 0)" fill="#8959e5" fill-rule="evenodd"/>
+    </g>
+    <path id="Path_2007" data-name="Path 2007" d="M30.045,67.841H61.191c0-20.519,1.868-15.483-15.573-26.859-17.441,11.376-15.573,6.34-15.573,26.859" transform="translate(12.648 17.286)" fill="#fff" fill-rule="evenodd"/>
+    <path id="Path_2008" data-name="Path 2008" d="M30.045,22.09H61.191c0,20.519,1.868,15.483-15.573,26.859C28.177,37.573,30.045,42.609,30.045,22.09" transform="translate(12.648 9.317)" fill="#fff" fill-rule="evenodd"/>
+    <rect id="Rectangle_108" data-name="Rectangle 108" width="39.502" height="4.965" transform="translate(38.516 85.126)" fill="#676665"/>
+    <rect id="Rectangle_109" data-name="Rectangle 109" width="39.502" height="4.965" transform="translate(38.516 26.443)" fill="#676665"/>
+    <path id="Path_2009" data-name="Path 2009" d="M31.576,62.249q6.68-4,13.372-8.01,6.69,4,13.378,8.01H31.576Z" transform="translate(13.319 22.878)" fill="#f8d44e" fill-rule="evenodd"/>
+    <path id="Path_2010" data-name="Path 2010" d="M31.82,24.539H57.913c0,13.059,1.56,12.809-13.046,20.052C30.259,37.348,31.82,37.6,31.82,24.539" transform="translate(13.401 10.35)" fill="#f8d44e" fill-rule="evenodd"/>
+    <path id="Path_2011" data-name="Path 2011" d="M104.77,56.776,66.592,18.6v4.965H62.415c0,20.518,1.867,15.483-15.573,26.859,17.44,11.376,15.573,6.34,15.573,26.859h4.177v4.965H27.09l26.106,26.1A58.286,58.286,0,0,0,104.77,56.776" transform="translate(11.426 7.845)" fill="#6d2aef" fill-rule="evenodd"/>
+  </g>
+</svg>
