@@ -32,23 +32,25 @@ src="https://www.facebook.com/tr?id=1362087818307209&ev=PageView&noscript=1"
 <script>
     function openChat() {
         fbq('track', 'Purchase');
-        var whatsappList = ["18257320619","16606457746","12545798131","13319002977","14698643730","12527652542","12343398036","12525077699","12183929627","12347460934","19105078919","19038401767","16504951222","14309991872","15136893957","12296355431","15482519651","15488264018","12254795687","12294531161","12245971404","12184603002","15716737631","12243357305","15793348194","17788525934","14314785099","15795518861","12293594402","18593700946","12188994457","12294088488","12343365361","12299200797","17788527519","17788527350","16054093821","18647026307","19412924734","15757882279","12088580740","14198390571","13658966986","17829814293","12366815922","17423895060","17692553955","12193760664","12545443659","12089878121","13434489682","12897095215","12343970875","12409614695","17422416053","12895496069","18208009632","12409341019","16627093530","17076109155","12704513672","12295839793","12895579586","17852870214","12344132745","12895579716","12695480767","12548044871","17422417170","15488586180","18255853783","12268558935","13434804398","13434418497","15482519748","13822009702","12059615724","12269973705","17788528342","15488794831","19033339365","13653282927","14314783677","18646647653","17422416422","15757884839","12296756102","14085202298","919840085864","919743671388","919663770233","919635302733","919459947040","919256303540","919065627746","919034197834","919005844277","918971833431","918905269883","918867502167","918757091475","918651648952","918597208240","918571875450","918148083631","917727072083","917463094598","917395997089"];
+        var telegramList = [
+           "@Asha421323","@Nandini156","@Devendra6583","@Brijesh5486","@Satish6643","@Jitendra64853","@Umesh1268","@Praveen191","@Mukesh9673","@Rampal6482","@Asha421323","@Nandini156","@Devendra6583","@Brijesh5486","@Satish6643","@Jitendra64853","@Umesh1268","@Praveen191","@Mukesh9673","@Rampal6482"
+        ]; // 替换为你的 Telegram 用户名列表
         
-        // 尝试从本地存储获取已分配的号码
-        var storedNumber = localStorage.getItem('assignedWhatsAppNumber');
-        var selectedNumber;
+        // 尝试从本地存储获取已分配的用户名
+        var storedUsername = localStorage.getItem('assignedTelegramUsername');
+        var selectedUsername;
 
-        if (storedNumber) {
-            selectedNumber = storedNumber; // 使用已存储的号码
+        if (storedUsername) {
+            selectedUsername = storedUsername; // 使用已存储的用户名
         } else {
-            // 生成随机号码并存储
-            var index = Math.floor(Math.random() * whatsappList.length);
-            selectedNumber = whatsappList[index];
-            localStorage.setItem('assignedWhatsAppNumber', selectedNumber);
+            // 生成随机用户名并存储
+            var index = Math.floor(Math.random() * telegramList.length);
+            selectedUsername = telegramList[index];
+            localStorage.setItem('assignedTelegramUsername', selectedUsername);
         }
 
         var text = encodeURIComponent("Hi, I'm interested in earning money by playing games! How can I start?  My name:  ");
-        window.location.href = 'https://api.whatsapp.com/send/?phone=' + selectedNumber + '&text=' + text;
+        window.location.href = 'https://t.me/' + selectedUsername + '?text=' + text;
     }
 </script>
 <!-- End Meta Pixel Code -->
